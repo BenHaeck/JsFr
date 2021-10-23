@@ -2,11 +2,12 @@
 
 // plut input values in here and the events will update them to match you key presses.
 // the javascript naming convention is weird so use the log keys if you need to know what a certain
-const keyinput = {logKeys:false};
+let keyinput = {logKeys:false};
 
 
 
 document.addEventListener('keydown', (e)=>{
+	if (keyinput == null) keyinput = {logKeys:false};
 	if (keyinput[e.code] != null){
 		keyinput[e.code] = true;
 	}
@@ -30,8 +31,10 @@ document.addEventListener('mousemove', (e) => {
 	let tmy = e.clientY;
 
 	if (RenderVals != null) {
-		tmx -= RenderVals.canvas.offsetLeft;
-		tmy -= RenderVals.canvas.offsetTop;
+		if (RenderVals.canvas != null){
+			tmx -= RenderVals.canvas.offsetLeft;
+			tmy -= RenderVals.canvas.offsetTop;
+		}
 	}
 
 	mouseinput.pos.x = tmx;
