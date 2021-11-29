@@ -4,7 +4,7 @@ A simple JavaScript game library
 This library is under the MIT licence. so feel free to use and.or modify it however you please.
 
 This library is built to be moduler so feel free to mix and match. However the input module depends
-on the Rendering to find out the position of the canvas.
+on the rendering module to find the position of the canvas.
 
 To use it. you first need to setup the Renderer, and pass in the id of the HTML canvas.
 Then create the game world and pass in your target framerate, you can also pass in your start,
@@ -20,7 +20,7 @@ gameWorld.start = function () {
 }
 
 // runs every frame
-gameWorld.update = function () {
+gameWorld.update = function (dt) {
 
 }
 
