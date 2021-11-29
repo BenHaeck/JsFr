@@ -10,17 +10,20 @@ class GameWorld {
 		this.draw = draw;
 	}
 
-	loop () {
-		//if (gw == null)
-		const gw = this;
-		if (gw.update != null)
-		gw.update(1/gw.loopRate);
-		if (gw.draw != null)
-		gw.draw ();
-		//console.log(this)
+	loop (timestamp) {
+		let dt;
+		if (timestamp == null || this.oldTimeStamp == null)
+			dt = 0;
+		else
+			dt = timestamp-this.oldTimeStamp;
+		this.oldTimeStamp = timestamp;
+		if (this.update != null){this.update(dt/1000)}
+		if (this.draw != null){this.draw()}
+
+		window.requestAnimationFrame((timestamp)=>this.loop(timestamp));
 	}
+
 	run () {
-		setTimeout (()=>this.run(), 1000/this.loopRate,this);
 		this.loop()
 	}
 
