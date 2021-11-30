@@ -3,8 +3,7 @@
 // Members include (loopRate: number, start:function, update:function, draw:function)
 class GameWorld {
 	// constructor (target)
-	constructor (targetLoopRate, start, update, draw) {
-		this.loopRate = targetLoopRate;
+	constructor (start, update, draw) {
 		this.start = start;
 		this.update = update;
 		this.draw = draw;
