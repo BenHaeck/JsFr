@@ -15,9 +15,9 @@ gr.ctx.imageSmoothingEnabled = false;
 const mouseSize = new Vector2(16,16);
 
 // Defines the level
-const level = new GameWorld (60,
+const level = new GameWorld ();
 // Defines the start funtion
-function (){
+level.start = function (){
 
 	// Defines the player Character
 	this.player = new Player (new Vector2 (64,256));
@@ -41,14 +41,14 @@ function (){
 },
 
 // this is the update function, and gets called every frame
-function (dt) {
+level.update = function (dt) {
 	// updates the player and smilies
 	this.player.update (this, null, dt);
 	updateActors (this, this.smilies, dt);
 },
 
 // this is the draw function, and gets called every frame
-function () {
+level.draw = function () {
 	// fills the screen with black
 	gr.setFillStyle('black');
 	gr.fillScreen();
@@ -66,7 +66,7 @@ function () {
 	if (mouseinput.click)
 		gr.ctx.fillStyle = 'red'
 	gr.drawRect(mouseinput.pos,mouseSize);
-});
+}
 
 class Smily extends Actor {
 	constructor (pos, size, rot, torqe) {
@@ -110,6 +110,5 @@ class Player extends Actor {
 }
 Player.speed = 80;
 
-level.start();
 // starts the update loop
 level.run();
